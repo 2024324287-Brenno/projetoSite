@@ -1,840 +1,818 @@
+/* =========================================================
+   TMSI – Tema escuro tecnológico
+   Fundo índigo-preto, grade de circuito, brilho azul/ciano/violeta
+   ========================================================= */
 
-/* ===================================
-   1. RESET E REGRAS GERAIS
-   =================================== */
+   @import url("https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@700&display=swap");
 
-   * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-  }
-  
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  
-  .section {
-    padding: 4rem 0;
-  }
-  
-  .section h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: #2c3e50;
-  }
-  
-  .bg-light {
-    background-color: #f8f9fa;
-  }
-  
-  /* ===================================
-     2. HEADER E NAVEGAÇÃO
-     =================================== */
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #2c3e50;
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  .logo {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.6rem;
-    font-weight: bold;
-  }
-  
-  .nav-menu ul {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
-  }
-  
-  .nav-menu a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
-  }
-  
-  .nav-menu a:hover {
-    color: #3498db;
-  }
-  
-  /* ===================================
-     3. BOTÃO HAMBÚRGUER
-     =================================== */
-  
-  .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    flex-direction: column;
-    gap: 5px;
-    padding: 5px;
-  }
-  
-  .menu-toggle .bar {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-  
-  /* ===================================
-     4. CARROSSEL HERO
-     =================================== */
-  
-  .carousel-section {
-    position: relative;
-    width: 100%;
-    height: 70vh;
-    overflow: hidden;
-  }
-  
-  .carousel-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
-
-  .posicao-btn {
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
-  
-  .carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-  
-    width: 100%;
-    height: 100%;
-  
-    opacity: 0;
-  
-    transition: opacity 0.8s ease-in-out;
-  
-    background-size: cover;
-    background-position: center;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    text-align: center;
-    color: #fff;
-  
-    padding: 0 1rem;
-  }
-  
-  .carousel-slide.active {
-    opacity: 1;
-    z-index: 1;
-  }
-  
-  /* ===================================
-     5. IMAGENS DOS SLIDES
-     =================================== */
-  
-  .slide-1 {
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url("../img/hardware.jpg");
-  }
-  
-  .slide-2 {
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url("../img/design.jpg");
-  }
-  
-  .slide-3 {
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url("../img/projeto.jpeg");
-  }
-  
-  /* ===================================
-     6. CONTEÚDO DO HERO
-     =================================== */
-  
-  .hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .hero-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-  
-    max-width: 600px;
-  
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* ===================================
-     7. BOTÃO PRINCIPAL
-     =================================== */
-  
-  .btn-primary {
-    display: inline-block;
-  
-    background-color: #3498db;
-    color: #fff;
-  
-    padding: 0.8rem 1.8rem;
-  
-    border: none;
-    border-radius: 5px;
-  
-    text-decoration: none;
-  
-    font-size: 1rem;
-  
-    cursor: pointer;
-  
-    transition:
-      background 0.3s ease,
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-  
-  .btn-primary:hover {
-    background-color: #2980b9;
-  
-    transform: translateY(-2px);
-  
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* ===================================
-     8. CONTROLES E SETAS DO CARROSSEL
-     =================================== */
-  
-  .carousel-btn {
-    position: absolute;
-  
-    top: 50%;
-  
-    transform: translateY(-50%);
-  
-    background-color: rgba(0, 0, 0, 0.5);
-  
-    color: white;
-  
-    border: none;
-  
-    font-size: 1.5rem;
-  
-    padding: 0.8rem 1rem;
-  
-    cursor: pointer;
-  
-    z-index: 10;
-  
-    border-radius: 4px;
-  
-    transition:
-      background-color 0.3s ease,
-      transform 0.3s ease;
-  }
-  
-  .carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
-  .prev-btn {
-    left: 20px;
-  }
-  
-  .next-btn {
-    right: 20px;
-  }
-  
-  /* ===================================
-     9. SETAS DESENHADAS EM CSS
-     =================================== */
-  
-  .botao {
-    display: inline-block;
-  
-    width: 12px;
-    height: 12px;
-  
-    border-top: 3px solid #fff;
-    border-right: 3px solid #fff;
-  }
-  
-  .botao.esquerda {
-    transform: rotate(-135deg);
-  }
-  
-  .botao.direita {
-    transform: rotate(45deg);
-  }
-  
-  /* ===================================
-     10. INDICADORES DO CARROSSEL
-     =================================== */
-  
-  .carousel-dots {
-    position: absolute;
-  
-    bottom: 20px;
-    left: 50%;
-  
-    transform: translateX(-50%);
-  
-    display: flex;
-  
-    gap: 10px;
-  
-    z-index: 10;
-  }
-  
-  .dot {
-    width: 12px;
-    height: 12px;
-  
-    background-color: rgba(255, 255, 255, 0.5);
-  
-    border-radius: 50%;
-  
-    cursor: pointer;
-  
-    transition:
-      background-color 0.3s ease,
-      transform 0.3s ease;
-  }
-  
-  .dot:hover {
-    transform: scale(1.2);
-  }
-  
-  .dot.active {
-    background-color: #3498db;
-  
-    transform: scale(1.15);
-  }
-  
-  /* ===================================
-     11. GRIDS
-     =================================== */
-  
-  .grid-2-cols {
-    display: grid;
-  
-    grid-template-columns: 1fr 1fr;
-  
-    gap: 2rem;
-  }
-  
-  .grid-4-cols {
-    display: grid;
-  
-    grid-template-columns: repeat(4, 1fr);
-  
-    gap: 1.5rem;
-  }
-  
-  /* ===================================
-     12. BLOCO DE TEXTO
-     =================================== */
-  
-  .text-block {
-    display: flex;
-  
-    flex-direction: column;
-  
-    justify-content: center;
-  
-    align-items: center;
-  
-    text-align: center;
-  
-    margin-top: 2rem;
-  }
-  
-  /* ===================================
-     13. CARDS DE ESTATÍSTICAS
-     =================================== */
-  
-  .stat-card {
-    background-color: #eef2f7;
-  
-    padding: 1.5rem;
-  
-    border-radius: 8px;
-  
-    text-align: center;
-  
-    margin-bottom: 1rem;
-  
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-  
-  .stat-card:hover {
-    transform: translateY(-5px);
-  
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .stat-card h3 {
-    font-size: 2rem;
-  
-    color: #3498db;
-  }
-  
-  /* ===================================
-     14. TÓPICOS DA DISCIPLINA
-     =================================== */
-  
-  #servicos {
-    position: relative;
-  
-    overflow: hidden;
-  }
-  
-  /* Título da seção */
-  
-  #servicos h2 {
-    font-size: 2.3rem;
-  
-    margin-bottom: 3rem;
-  
-    position: relative;
-  }
-  
-  /* Linha abaixo do título */
-  
-  #servicos h2::after {
-    content: "";
-  
-    display: block;
-  
-    width: 60px;
-  
-    height: 4px;
-  
-    background-color: #3498db;
-  
-    margin: 12px auto 0;
-  
-    border-radius: 5px;
-  }
-  
-  /* ===================================
-     15. CARDS DOS TÓPICOS
-     =================================== */
-  
-  .card {
-    background: #fff;
-  
-    padding: 2rem;
-  
-    border-radius: 12px;
-  
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  
-    text-align: center;
-  
-    position: relative;
-  
-    overflow: hidden;
-  
-    transition:
-      transform 0.4s ease,
-      box-shadow 0.4s ease,
-      background-color 0.4s ease;
-  }
-  
-  /* Linha superior do card */
-  
-  .card::before {
-    content: "";
-  
-    position: absolute;
-  
-    top: 0;
-    left: 0;
-  
-    width: 100%;
-  
-    height: 4px;
-  
-    background-color: #3498db;
-  
-    transform: scaleX(0);
-  
-    transform-origin: center;
-  
-    transition: transform 0.4s ease;
-  }
-  
-  /* Efeito hover */
-  
-  .card:hover {
-    transform: translateY(-10px);
-  
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
-  }
-  
-  /* Ativa a linha superior */
-  
-  .card:hover::before {
-    transform: scaleX(1);
-  }
-  
-  /* Ícone */
-  
-  .card .icon {
-    font-size: 2.8rem;
-  
-    margin-bottom: 1rem;
-  
-    transition: transform 0.4s ease;
-  }
-  
-  /* Animação do ícone */
-  
-  .card:hover .icon {
-    transform: scale(1.15);
-  }
-  
-  /* Título do card */
-  
-  .card h3 {
-    margin-bottom: 0.5rem;
-  
-    color: #2c3e50;
-  
-    transition: color 0.3s ease;
-  }
-  
-  /* Mudança de cor do título */
-  
-  .card:hover h3 {
-    color: #3498db;
-  }
-  
-  /* Texto */
-  
-  .card p {
-    color: #555;
-  
-    transition: color 0.3s ease;
-  }
-  
-  /* ===================================
-     16. FORMULÁRIO DE CONTATO
-     =================================== */
-  
-  .contact-form {
-    max-width: 600px;
-  
-    margin: 0 auto;
-  }
-  
-  .form-group {
-    margin-bottom: 1.2rem;
-  }
-  
-  .form-group label {
-    display: block;
-  
-    margin-bottom: 0.5rem;
-  
-    font-weight: bold;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-  
-    padding: 0.8rem;
-  
-    border: 1px solid #ccc;
-  
-    border-radius: 4px;
-  
-    font-size: 1rem;
-  
-    font-family: inherit;
-  
-    transition:
-      border-color 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-  
-  .form-group input:focus,
-  .form-group textarea:focus {
-    outline: none;
-  
-    border-color: #3498db;
-  
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
-  }
-  
-  /* Borda vermelha para campos com erro */
-  
-  .input-error {
-    border-color: #e74c3c !important;
-  }
-  
-  /* Mensagem de erro */
-  
-  .error-text {
-    color: #e74c3c;
-  
-    font-size: 0.85rem;
-  
-    margin-top: 0.3rem;
-  
-    display: block;
-  }
-  
-  /* ===================================
-     17. RODAPÉ
-     =================================== */
-  
-  .footer {
-    background-color: #1a252f;
-  
-    color: #ecf0f1;
-  
-    padding-top: 2rem;
-  
-    width: 100%;
-  }
-  
-  /* Grid do rodapé */
-  
-  .grid-footer {
-    display: grid;
-  
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  
-    gap: 2rem;
-  
-    padding-bottom: 4px;
-  
-    justify-items: center;
-  }
-  
-  /* Coluna */
-  
-  .footer-col {
-    display: flex;
-  
-    flex-direction: column;
-  
-    align-items: center;
-  
-    text-align: center;
-  
-    width: 100%;
-  }
-  
-  /* Parágrafo */
-  
-  .footer-col p {
-    text-align: center;
-  
-    margin: 0 auto;
-  }
-  
-  /* Títulos */
-  
-  .footer-col h3,
-  .footer-col h4 {
-    margin-bottom: 1rem;
-  
-    color: #fff;
-  }
-  
-  /* Listas */
-  
-  .footer-col ul {
-    list-style: none;
-  }
-  
-  .footer-col ul li {
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Links */
-  
-  .footer-col a {
-    color: #bdc3c7;
-  
-    text-decoration: none;
-  
-    transition: color 0.3s ease;
-  }
-  
-  .footer-col a:hover {
-    color: #3498db;
-  }
-  
-  /* Links sociais */
-  
-  .social-links {
-    display: flex;
-  
-    flex-direction: column;
-  
-    gap: 0.5rem;
-  }
-  
-  /* Rodapé inferior */
-  
-  .footer-bottom {
-    grid-column: 1 / -1;
-  
-    width: 100%;
-  
-    text-align: center;
-  
-    padding: 1.5rem 0;
-  
-    font-size: 0.9rem;
-  
-    color: #7f8c8d;
-  }
-  
-  /* ===================================
-     18. RESPONSIVIDADE
-     =================================== */
-  
-  @media (max-width: 768px) {
-    .grid-4-cols{
-      grid-template-columns: 1fr;
-    }
-    /* Menu */
-  
-    .menu-toggle {
-      display: flex;
-    }
-  
-    .nav-menu {
-      display: none;
-  
-      position: absolute;
-  
-      top: 100%;
-      left: 0;
-  
-      width: 100%;
-  
-      background-color: #2c3e50;
-    }
-  
-    .nav-menu.active {
-      display: block;
-    }
-  
-    .nav-menu ul {
-      flex-direction: column;
-  
-      padding: 1rem 0;
-  
-      gap: 0;
-    }
-  
-    .nav-menu li {
-      text-align: center;
-  
-      padding: 0.8rem 0;
-    }
-  
-    /* Grids */
-  
-    .grid-2-cols,
-    .grid-3-cols,
-    .grid-footer {
-      grid-template-columns: 1fr;
-    }
-  
-    /* Hero */
-  
-    .carousel-section {
-      height: 65vh;
-    }
-  
-    .hero-content h1 {
-      font-size: 1.8rem;
-    }
-  
-    .hero-content p {
-      font-size: 1rem;
-    }
-  
-    /* Botões do carrossel */
-  
-    .carousel-btn {
-      padding: 0.5rem;
-    }
-  
-    /* Título dos tópicos */
-  
-    #servicos h2 {
-      font-size: 1.8rem;
-    }
-  
-    /* Cards */
-  
-    .card {
-      padding: 1.5rem;
-    }
-  }
-  
-  /* ===================================
-     19. ACESSIBILIDADE
-     =================================== */
-  
-  /* Remove animações para usuários que
-     preferem menos movimento */
-  
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-  
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
+   :root {
+       color-scheme: dark;
+   
+       --bg: #070916;
+       --bg-alt: #0b0e22;
+       --surface: #11152e;
+       --line: #262b57;
+       --text: #e9ebfb;
+       --muted: #a3a9d1;
+   
+       /* Cores em RGB para usar com transparência */
+       --blue: 61, 107, 255;
+       --violet: 138, 77, 255;
+       --cyan: 25, 211, 243;
+   
+       --header-h: 72px;
+       --radius: 16px;
+   
+       --font-display: "Sora", system-ui, sans-serif;
+       --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+       --font-mono: "JetBrains Mono", ui-monospace, "Courier New", monospace;
+   }
+   
+   /* ---------- Base ---------- */
+   *,
+   *::before,
+   *::after {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+   }
+   
+   html {
+       scroll-behavior: smooth;
+   }
+   
+   body {
+       font-family: var(--font-body);
+       font-size: 1.05rem;
+       line-height: 1.65;
+       color: var(--text);
+       background: var(--bg);
+   }
+   
+   a {
+       color: inherit;
+       text-decoration: none;
+   }
+   
+   ul {
+       list-style: none;
+   }
+   
+   h1,
+   h2,
+   h3 {
+       font-family: var(--font-display);
+       line-height: 1.08;
+       letter-spacing: -0.03em;
+   }
+   
+   :focus-visible {
+       outline: 2px solid rgb(var(--cyan));
+       outline-offset: 3px;
+   }
+   
+   section[id] {
+       scroll-margin-top: var(--header-h);
+   }
+   
+   .container {
+       width: min(1120px, 100% - 3rem);
+       margin-inline: auto;
+   }
+   
+   /* ---------- Cabeçalho ---------- */
+   .header {
+       position: fixed;
+       inset: 0 0 auto 0;
+       z-index: 100;
+       height: var(--header-h);
+       padding-inline: clamp(1rem, 4vw, 3rem);
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       background: rgba(7, 9, 22, 0.72);
+       backdrop-filter: blur(14px) saturate(140%);
+       -webkit-backdrop-filter: blur(14px) saturate(140%);
+   }
+   
+   .header::after {
+       content: "";
+       position: absolute;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       height: 1px;
+       background: linear-gradient(90deg, transparent, rgba(var(--blue), 0.8), rgba(var(--cyan), 0.8), transparent);
+   }
+   
+   .logo {
+       font-family: var(--font-mono);
+       font-weight: 700;
+       font-size: 1.35rem;
+       letter-spacing: 0.06em;
+       color: #fff;
+       padding: 4px 12px;
+       border: 1px solid rgba(var(--cyan), 0.6);
+       border-radius: 8px;
+       background: rgba(var(--cyan), 0.08);
+       box-shadow: 0 0 18px rgba(var(--cyan), 0.25);
+       transition: box-shadow 0.25s, background 0.25s;
+   }
+   
+   .logo:hover {
+       background: rgba(var(--cyan), 0.18);
+       box-shadow: 0 0 28px rgba(var(--cyan), 0.5);
+   }
+   
+   .nav-menu ul {
+       display: flex;
+       gap: clamp(1rem, 3vw, 2.5rem);
+   }
+   
+   .nav-menu a {
+       position: relative;
+       display: inline-block;
+       padding: 0.4rem 0;
+       font-weight: 500;
+       color: var(--muted);
+       transition: color 0.2s;
+   }
+   
+   .nav-menu a::after {
+       content: "";
+       position: absolute;
+       left: 0;
+       bottom: 0;
+       width: 100%;
+       height: 2px;
+       background: linear-gradient(90deg, rgb(var(--blue)), rgb(var(--cyan)));
+       box-shadow: 0 0 10px rgba(var(--cyan), 0.7);
+       transform: scaleX(0);
+       transform-origin: left;
+       transition: transform 0.25s ease;
+   }
+   
+   .nav-menu a:hover {
+       color: #fff;
+   }
+   
+   .nav-menu a:hover::after {
+       transform: scaleX(1);
+   }
+   
+   /* Botão hambúrguer */
+   .menu-toggle {
+       display: none;
+       flex-direction: column;
+       justify-content: center;
+       gap: 6px;
+       width: 44px;
+       height: 44px;
+       padding: 11px;
+       background: rgba(255, 255, 255, 0.04);
+       border: 1px solid var(--line);
+       border-radius: 10px;
+       cursor: pointer;
+   }
+   
+   .menu-toggle .bar {
+       display: block;
+       height: 2px;
+       background: #fff;
+       border-radius: 2px;
+       transition: transform 0.3s, opacity 0.3s;
+   }
+   
+   .menu-toggle.active .bar:nth-child(1),
+   .menu-toggle.open .bar:nth-child(1) {
+       transform: translateY(8px) rotate(45deg);
+   }
+   
+   .menu-toggle.active .bar:nth-child(2),
+   .menu-toggle.open .bar:nth-child(2) {
+       opacity: 0;
+   }
+   
+   .menu-toggle.active .bar:nth-child(3),
+   .menu-toggle.open .bar:nth-child(3) {
+       transform: translateY(-8px) rotate(-45deg);
+   }
+   
+   /* ---------- Carrossel (hero) ---------- */
+   .carousel-section {
+       position: relative;
+       height: 100vh;
+       min-height: 600px;
+       overflow: hidden;
+       background: var(--bg);
+   }
+   
+   .carousel-container {
+       position: relative;
+       width: 100%;
+       height: 100%;
+   }
+   
+   .carousel-slide {
+       --a: var(--blue);
+       --b: var(--cyan);
+   
+       position: absolute;
+       inset: 0;
+       isolation: isolate;
+       display: flex;
+       align-items: center;
+       padding: var(--header-h) clamp(1.5rem, 8vw, 7rem) 0;
+       color: var(--text);
+       opacity: 0;
+       visibility: hidden;
+       transition: opacity 0.8s ease, visibility 0.8s;
+   }
+   
+   .carousel-slide.active {
+       opacity: 1;
+       visibility: visible;
+       z-index: 1;
+   }
+   
+   /* Cada slide ganha seu par de cores */
+   .slide-1 {
+       --a: var(--blue);
+       --b: var(--cyan);
+   }
+   
+   .slide-2 {
+       --a: var(--violet);
+       --b: var(--blue);
+   }
+   
+   .slide-3 {
+       --a: var(--cyan);
+       --b: var(--violet);
+   }
+   
+   /* Grade de circuito */
+   .carousel-slide::before {
+       content: "";
+       position: absolute;
+       inset: 0;
+       z-index: -2;
+       background-image:
+           linear-gradient(rgba(150, 160, 255, 0.1) 1px, transparent 1px),
+           linear-gradient(90deg, rgba(150, 160, 255, 0.1) 1px, transparent 1px);
+       background-size: 56px 56px;
+       -webkit-mask-image: radial-gradient(ellipse 80% 90% at 70% 45%, #000 15%, transparent 75%);
+       mask-image: radial-gradient(ellipse 80% 90% at 70% 45%, #000 15%, transparent 75%);
+   }
+   
+   /* Brilho + anéis de "radar/processador" à direita */
+   .carousel-slide::after {
+       content: "";
+       position: absolute;
+       inset: 0;
+       z-index: -1;
+       background:
+           repeating-radial-gradient(circle at 80% 42%, transparent 0 54px, rgba(var(--b), 0.2) 55px 56px),
+           radial-gradient(circle at 80% 42%, rgba(var(--a), 0.4), transparent 60%);
+       -webkit-mask-image: radial-gradient(circle 560px at 80% 42%, #000 20%, transparent 100%);
+       mask-image: radial-gradient(circle 560px at 80% 42%, #000 20%, transparent 100%);
+       animation: pulso 7s ease-in-out infinite alternate;
+   }
+   
+   @keyframes pulso {
+       from {
+           opacity: 0.7;
+           transform: scale(1);
+       }
+       to {
+           opacity: 1;
+           transform: scale(1.06);
+       }
+   }
+   
+   /* Conteúdo (cobre também os slides 2 e 3, que usam .carousel-container) */
+   .hero-content,
+   .carousel-slide .carousel-container {
+       width: auto;
+       height: auto;
+       max-width: 780px;
+   }
+   
+   .hero-content h1,
+   .carousel-slide .carousel-container h1 {
+       font-size: clamp(3.2rem, 10.5vw, 8rem);
+       font-weight: 800;
+       line-height: 0.95;
+       letter-spacing: -0.045em;
+       background: linear-gradient(100deg, #fff 30%, rgb(var(--b)) 100%);
+       -webkit-background-clip: text;
+       background-clip: text;
+       -webkit-text-fill-color: transparent;
+       color: transparent;
+       padding-bottom: 0.08em;
+   }
+   
+   .hero-content p,
+   .carousel-slide .carousel-container p {
+       max-width: 34ch;
+       margin: 1.6rem 0 2.2rem;
+       padding-left: 1rem;
+       border-left: 3px solid rgb(var(--b));
+       font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+       color: var(--text);
+   }
+   
+   /* Entrada orquestrada: só no slide ativo */
+   .carousel-slide.active h1,
+   .carousel-slide.active p,
+   .carousel-slide.active .btn-primary {
+       animation: entrada 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+   }
+   
+   .carousel-slide.active p {
+       animation-delay: 0.12s;
+   }
+   
+   .carousel-slide.active .btn-primary {
+       animation-delay: 0.24s;
+   }
+   
+   @keyframes entrada {
+       from {
+           opacity: 0;
+           transform: translateY(28px);
+           filter: blur(6px);
+       }
+       to {
+           opacity: 1;
+           transform: none;
+           filter: none;
+       }
+   }
+   
+   /* Botão principal */
+   .btn-primary {
+       display: inline-block;
+       padding: 0.9rem 1.9rem;
+       font-family: var(--font-body);
+       font-size: 1rem;
+       font-weight: 700;
+       color: #fff;
+       background: linear-gradient(135deg, rgb(var(--blue)), rgb(var(--violet)));
+       border: 1px solid rgba(255, 255, 255, 0.25);
+       border-radius: 12px;
+       box-shadow: 0 10px 32px rgba(var(--blue), 0.45);
+       cursor: pointer;
+       transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+   }
+   
+   .btn-primary:hover {
+       transform: translateY(-3px);
+       box-shadow: 0 14px 40px rgba(var(--violet), 0.6);
+       filter: brightness(1.12);
+   }
+   
+   .btn-primary:active {
+       transform: translateY(0);
+   }
+   
+   /* Setas */
+   .carousel-btn {
+       position: absolute;
+       top: 50%;
+       z-index: 5;
+       width: 52px;
+       height: 52px;
+       display: grid;
+       place-items: center;
+       transform: translateY(-50%);
+       background: rgba(255, 255, 255, 0.05);
+       backdrop-filter: blur(8px);
+       -webkit-backdrop-filter: blur(8px);
+       border: 1px solid var(--line);
+       border-radius: 50%;
+       cursor: pointer;
+       transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+   }
+   
+   .carousel-btn:hover {
+       background: rgba(var(--cyan), 0.15);
+       border-color: rgb(var(--cyan));
+       box-shadow: 0 0 20px rgba(var(--cyan), 0.45);
+   }
+   
+   .prev-btn {
+       left: clamp(0.5rem, 2vw, 1.5rem);
+   }
+   
+   .next-btn {
+       right: clamp(0.5rem, 2vw, 1.5rem);
+   }
+   
+   .botao {
+       display: block;
+       width: 12px;
+       height: 12px;
+       border-top: 2px solid #fff;
+       border-right: 2px solid #fff;
+   }
+   
+   .botao.esquerda {
+       transform: translateX(3px) rotate(-135deg);
+   }
+   
+   .botao.direita {
+       transform: translateX(-3px) rotate(45deg);
+   }
+   
+   /* Indicadores */
+   .carousel-dots {
+       position: absolute;
+       left: 50%;
+       bottom: 30px;
+       z-index: 5;
+       display: flex;
+       gap: 10px;
+       transform: translateX(-50%);
+   }
+   
+   .dot {
+       width: 10px;
+       height: 10px;
+       border-radius: 999px;
+       background: rgba(255, 255, 255, 0.25);
+       cursor: pointer;
+       transition: width 0.3s, background 0.3s, box-shadow 0.3s;
+   }
+   
+   .dot.active {
+       width: 34px;
+       background: linear-gradient(90deg, rgb(var(--blue)), rgb(var(--cyan)));
+       box-shadow: 0 0 14px rgba(var(--cyan), 0.7);
+   }
+   
+   /* ---------- Seções ---------- */
+   .section {
+       padding: clamp(4rem, 9vw, 7rem) 0;
+       background: var(--bg);
+   }
+   
+   .section h2 {
+       margin-bottom: 2.8rem;
+       font-size: clamp(2rem, 5vw, 3.3rem);
+       font-weight: 800;
+       color: #fff;
+   }
+   
+   .section h2::after {
+       content: "";
+       display: block;
+       width: 72px;
+       height: 4px;
+       margin-top: 16px;
+       border-radius: 4px;
+       background: linear-gradient(90deg, rgb(var(--blue)), rgb(var(--cyan)));
+       box-shadow: 0 0 16px rgba(var(--cyan), 0.6);
+   }
+   
+   /* Seção alternada, com pontilhado sutil */
+   .bg-light {
+       background:
+           radial-gradient(rgba(150, 160, 255, 0.14) 1px, transparent 1px) 0 0 / 28px 28px,
+           var(--bg-alt);
+       border-block: 1px solid var(--line);
+   }
+   
+   /* Sobre / Hardware */
+   .grid-2-cols {
+       display: grid;
+       grid-template-columns: 1.3fr 1fr;
+       gap: clamp(2rem, 6vw, 5rem);
+       align-items: center;
+   }
+   
+   .text-block {
+       display: grid;
+       gap: 1.4rem;
+   }
+   
+   .text-block p {
+       padding-left: 1.2rem;
+       border-left: 3px solid rgb(var(--blue));
+       font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+       line-height: 1.5;
+       color: var(--text);
+   }
+   
+   .text-block p:nth-child(2) {
+       border-left-color: rgb(var(--cyan));
+       color: var(--muted);
+   }
+   
+   .stats-block {
+       display: grid;
+       gap: 1.2rem;
+   }
+   
+   .stat-card {
+       position: relative;
+       padding: 1.7rem 1.9rem;
+       background: linear-gradient(160deg, rgba(var(--blue), 0.14), rgba(255, 255, 255, 0.02));
+       border: 1px solid var(--line);
+       border-radius: var(--radius);
+       overflow: hidden;
+   }
+   
+   .stat-card::before {
+       content: "";
+       position: absolute;
+       inset: 0 0 auto 0;
+       height: 2px;
+       background: linear-gradient(90deg, rgb(var(--blue)), rgb(var(--cyan)));
+   }
+   
+   .stat-card h3 {
+       font-size: clamp(2.1rem, 5vw, 3.2rem);
+       font-weight: 800;
+       background: linear-gradient(100deg, #fff, rgb(var(--cyan)));
+       -webkit-background-clip: text;
+       background-clip: text;
+       -webkit-text-fill-color: transparent;
+       color: transparent;
+   }
+   
+   .stat-card p {
+       margin-top: 0.2rem;
+       color: var(--muted);
+   }
+   
+   /* Tópicos */
+   .grid-4-cols {
+       display: grid;
+       grid-template-columns: repeat(4, 1fr);
+       gap: 1.4rem;
+   }
+   
+   .card {
+       position: relative;
+       padding: 1.8rem 1.5rem;
+       background: linear-gradient(165deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+       border: 1px solid var(--line);
+       border-radius: var(--radius);
+       transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+   }
+   
+   .card:hover {
+       transform: translateY(-6px);
+       border-color: rgba(var(--cyan), 0.7);
+       box-shadow: 0 18px 50px rgba(var(--blue), 0.28), 0 0 0 1px rgba(var(--cyan), 0.25);
+   }
+   
+   .card .icon {
+       display: grid;
+       place-items: center;
+       width: 60px;
+       height: 60px;
+       margin-bottom: 1.3rem;
+       font-size: 1.8rem;
+       background: rgba(var(--blue), 0.16);
+       border: 1px solid rgba(var(--blue), 0.5);
+       border-radius: 14px;
+   }
+   
+   .card h3 {
+       margin-bottom: 0.5rem;
+       font-size: 1.3rem;
+       font-weight: 700;
+       color: #fff;
+   }
+   
+   .card p {
+       font-size: 0.98rem;
+       color: var(--muted);
+   }
+   
+   /* ---------- Contato ---------- */
+   .contact-form {
+       display: grid;
+       gap: 1.4rem;
+       max-width: 680px;
+       padding: clamp(1.4rem, 4vw, 2.4rem);
+       background: linear-gradient(165deg, var(--surface), var(--bg-alt));
+       border: 1px solid var(--line);
+       border-radius: 20px;
+       box-shadow: 0 30px 80px rgba(var(--blue), 0.12);
+   }
+   
+   .form-group {
+       display: grid;
+       gap: 0.45rem;
+   }
+   
+   .form-group label {
+       font-weight: 500;
+       color: var(--muted);
+   }
+   
+   .form-group input,
+   .form-group textarea {
+       width: 100%;
+       padding: 0.85rem 1rem;
+       font-family: inherit;
+       font-size: 1rem;
+       color: var(--text);
+       background: var(--bg);
+       border: 1px solid var(--line);
+       border-radius: 10px;
+       transition: border-color 0.2s, box-shadow 0.2s;
+   }
+   
+   .form-group textarea {
+       resize: vertical;
+   }
+   
+   .form-group input::placeholder,
+   .form-group textarea::placeholder {
+       color: rgba(163, 169, 209, 0.5);
+   }
+   
+   .form-group input:focus,
+   .form-group textarea:focus {
+       outline: none;
+       border-color: rgb(var(--cyan));
+       box-shadow: 0 0 0 4px rgba(var(--cyan), 0.18), 0 0 24px rgba(var(--cyan), 0.2);
+   }
+   
+   .contact-form .posicao-btn {
+       justify-self: end;
+   }
+   
+   /* ---------- Rodapé ---------- */
+   .footer {
+       position: relative;
+       color: var(--muted);
+       background: #04050d;
+   }
+   
+   .footer::before {
+       content: "";
+       position: absolute;
+       inset: 0 0 auto 0;
+       height: 1px;
+       background: linear-gradient(90deg, transparent, rgba(var(--violet), 0.9), rgba(var(--cyan), 0.9), transparent);
+   }
+   
+   .grid-footer {
+       padding: 3rem 0 2rem;
+   }
+   
+   .footer-col h3 {
+       margin-bottom: 0.5rem;
+       font-family: var(--font-mono);
+       font-size: 1.8rem;
+       color: #fff;
+       text-shadow: 0 0 20px rgba(var(--cyan), 0.6);
+   }
+   
+   .footer-col p {
+       max-width: 40ch;
+   }
+   
+   .footer-bottom {
+       padding: 1.2rem 1.5rem;
+       text-align: center;
+       font-size: 0.9rem;
+       border-top: 1px solid var(--line);
+   }
+   
+   /* ---------- Responsivo ---------- */
+   @media (max-width: 960px) {
+       .grid-4-cols {
+           grid-template-columns: repeat(2, 1fr);
+       }
+   }
+   
+   @media (max-width: 768px) {
+       .menu-toggle {
+           display: flex;
+       }
+   
+       .nav-menu {
+           position: absolute;
+           top: 100%;
+           left: 0;
+           right: 0;
+           max-height: 0;
+           overflow: hidden;
+           background: rgba(7, 9, 22, 0.96);
+           backdrop-filter: blur(14px);
+           -webkit-backdrop-filter: blur(14px);
+           transition: max-height 0.35s ease;
+       }
+   
+       .nav-menu.active,
+       .nav-menu.open,
+       .nav-menu.show {
+           max-height: 360px;
+           border-bottom: 1px solid var(--line);
+       }
+   
+       .nav-menu ul {
+           flex-direction: column;
+           gap: 0;
+           padding: 0.5rem 1.5rem 1rem;
+       }
+   
+       .nav-menu a {
+           display: block;
+           padding: 0.9rem 0;
+           border-bottom: 1px solid var(--line);
+       }
+   
+       .grid-2-cols {
+           grid-template-columns: 1fr;
+       }
+   
+       .carousel-btn {
+           width: 42px;
+           height: 42px;
+       }
+   }
+   
+   @media (max-width: 560px) {
+       .grid-4-cols {
+           grid-template-columns: 1fr;
+       }
+   
+       .contact-form .posicao-btn {
+           justify-self: stretch;
+           text-align: center;
+       }
+   }
+   
+   /* ---------- Acessibilidade: menos movimento ---------- */
+   @media (prefers-reduced-motion: reduce) {
+       html {
+           scroll-behavior: auto;
+       }
+   
+       *,
+       *::before,
+       *::after {
+           animation: none !important;
+           transition: none !important;
+       }
+   }
+   
+   /* ---------- Estados controlados pelo JavaScript ---------- */
+   
+   /* Cabeçalho depois de rolar a página */
+   .header.rolado {
+       background: rgba(7, 9, 22, 0.94);
+       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+   }
+   
+   /* Link do menu da seção visível */
+   .nav-menu a.ativo {
+       color: #fff;
+   }
+   
+   .nav-menu a.ativo::after {
+       transform: scaleX(1);
+   }
+   
+   /* Erros de validação */
+   .form-group input.invalido,
+   .form-group textarea.invalido {
+       border-color: #ff5d7a;
+       box-shadow: 0 0 0 4px rgba(255, 93, 122, 0.15);
+   }
+   
+   .campo-erro {
+       font-size: 0.88rem;
+       color: #ff8da1;
+   }
+   
+   /* Aviso geral do formulário */
+   .form-feedback {
+       padding: 0.9rem 1.1rem;
+       font-weight: 500;
+       border-radius: 10px;
+       border: 1px solid var(--line);
+   }
+   
+   .form-feedback[hidden] {
+       display: none;
+   }
+   
+   .form-feedback.sucesso {
+       color: #b8f5e3;
+       background: rgba(var(--cyan), 0.12);
+       border-color: rgba(var(--cyan), 0.6);
+   }
+   
+   .form-feedback.falha {
+       color: #ffc2cd;
+       background: rgba(255, 93, 122, 0.1);
+       border-color: rgba(255, 93, 122, 0.55);
+   }
