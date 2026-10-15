@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     function showSlide(index){
         slides.forEach((slide)=> slide.classList.remove("active"));
-        dot.forEach((dot)=> dot.classList.remove(active));
+        dot.forEach((dot)=> dot.classList.remove("active"));
 
         slideAtual=(index+slides.length) % slides.length;
 
@@ -30,4 +30,31 @@ document.addEventListener("DOMContentLoaded", ()=>{
         dot[slideAtual].classList.add("active");
     }
 
+    function nextSlide(){
+        showSlide(slideAtual+1);
+    }
+
+    function prevSlide(){
+        showSlide(slideAtual-1);
+    }
+
+    function startSlide(){
+        slideIntervalo=setInterval(nextSlide,5000);
+    }
+
+    function stopSlide(){
+        clearInterval(slideIntervalo);
+    }
+
+    nextBtn.addEventListener("click", ()=>{
+        nextSlide();
+        stopSlide();
+        startSlide();
+    });
+
+    prevBtn.addEventListener("click",()=>{
+        prevSlide();
+        stopSlide();
+        startSlide();
+    });
 })//  Fechamento do evento carregar página html
