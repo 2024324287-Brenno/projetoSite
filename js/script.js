@@ -66,7 +66,61 @@ document.addEventListener("DOMContentLoaded", ()=>{
             startSlide();
         })
     })
-    
+
 // Iniciar os slides de forma automática
     startSlide();
+
+    // Validação do formulário
+
+    const contatoForm=document.getElementById("contatoForm");
+    const nome=document.getElementById("nome");
+    const email=document.getElementById("email");
+    const mensagem=document.getElementById("mensagem");
+
+    contatoForm.addEventListener("submit", (event)=>{
+        event.preventDefault();
+
+        let isValid=true;
+
+        // Validação do campo nome
+
+        if(nome.value.trim().length<3){
+            showErro(nome, "O nome deve ter no mínimo 3 caracteres");
+            isValid=false;
+        }
+
+        // Validação do campo email
+
+        if(!isEmailValid(email.value.trim())){
+            showErro(email,"Insira um Email válido");
+            isValid=false;
+        }
+
+        // Validação do campo mensagem
+
+        if(isMensagemValid(mensagem.value.trim().length<10)){
+            showErro(mensagem,"A mensagem deve conter no mínimo 10 caracteres");
+            isValid=false;
+        }
+
+        if(isValid){
+            clearErro();
+            alert("Mensagem enviada com sucesso");
+            contatoForm.reset();
+        }
+    });
+
+    function isEmailValid(email){
+        const emailRegex=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(email);
+    }
+
+    function showErro(inputElement, mensagem){
+        const formGroup = inputElement.parentElement;
+        clearFieldError(inputElement);
+        const erroMensagem=document.createElement("small");
+        erroMensagem.className="error-text";
+        erroMensagem.innerText=mensagem;
+        formGroup.appenChild(erroMensagem);
+    }
 })//  Fechamento do evento carregar página html
